@@ -1,4 +1,4 @@
-FROM node:latest as builder
+FROM node:16.3.0-alpine as builder
 
 RUN mkdir -p /app
 
@@ -13,4 +13,4 @@ CMD ["npm", "start"]
 
 FROM nginx:alpine
 COPY /default.conf /etc/nginx/conf/default.conf
-COPY --from=builder app/dist/angular8-crud-demo usr/share/nginx/html
+COPY --from=builder app/dist/crudtuto-Front usr/share/nginx/html
